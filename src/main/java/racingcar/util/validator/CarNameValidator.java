@@ -6,6 +6,16 @@ import racingcar.util.ExceptionMessage;
 
 public class CarNameValidator extends Validator {
 
+    private enum Constants {
+        CAR_NAME_LENGTH(6), MIN_NUMBER_OF_CARS(2);
+
+        private final int value;
+
+        Constants(int value) {
+            this.value = value;
+        }
+    }
+
     @Override
     public void validate(String input) throws IllegalArgumentException {
         List<String> carNames = Arrays.asList(removeSpace(input).split(","));
@@ -16,13 +26,13 @@ public class CarNameValidator extends Validator {
     }
 
     private static void validateCarNameLength(String carName) {
-        if (carName.length() >= 6) {
+        if (carName.length() >= Constants.CAR_NAME_LENGTH.value) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_CAR_NAME_LENGTH.getMessage());
         }
     }
 
     private static void validateNumberOfCars(List<String> carNames) {
-        if (carNames.size() < 2) {
+        if (carNames.size() < Constants.MIN_NUMBER_OF_CARS.value) {
             throw new IllegalArgumentException(ExceptionMessage.INVALID_NUMBER_OF_CARS.getMessage());
         }
     }
