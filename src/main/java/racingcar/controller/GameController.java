@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -23,6 +24,7 @@ public class GameController {
             int numberOfTrials = inputView.readNumberOfTrials();
             System.out.println(numberOfTrials);
 
+            Cars cars =  Cars.by(carNames);
 
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
