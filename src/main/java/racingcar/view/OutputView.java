@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.model.Cars;
+
 public class OutputView {
     private enum ConsoleMessage {
         OUTPUT_RESULT("실행 결과"),
@@ -14,5 +16,12 @@ public class OutputView {
 
     public void printExceptionMessage(Exception exception) {
         System.out.println(exception.getMessage());
+    }
+
+    public void printResult(){
+        System.out.println(ConsoleMessage.OUTPUT_RESULT.message);
+    }
+    public void printMoving(Cars cars){
+        System.out.println(cars);
     }
 }
