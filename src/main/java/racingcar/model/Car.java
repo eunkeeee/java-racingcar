@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 public class Car {
 
+    private StringBuilder positionDisplay = new StringBuilder();
+
     private enum Constants {
         MIN_RANGE(0), MAX_RANGE(9), BOUNDARY_VALUE(4);
 
@@ -26,6 +28,7 @@ public class Car {
     public void move() {
         if (isMoveForward()) {
             this.position++;
+            positionDisplay.append("-");
         }
     }
 
@@ -41,10 +44,8 @@ public class Car {
         return String.format("%s : %s%n", name, getPositionDisplay());
     }
 
-    private StringBuilder getPositionDisplay() {
-        StringBuilder positionDisplay = new StringBuilder();
-        Stream.generate(() -> "-").limit(position).forEach(positionDisplay::append);
-        return positionDisplay;
+    private String getPositionDisplay() {
+        return positionDisplay.toString();
     }
 
     public int getPosition() {
