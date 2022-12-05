@@ -28,7 +28,7 @@ public class OutputView {
         System.out.println(cars);
     }
 
-    public void printWinner(Cars cars) {
+    public void printWinners(Cars cars) {
         System.out.println(String.format(ConsoleMessage.OUTPUT_FINAL_WINNER.message, cars.getWinners()));
     }
 }

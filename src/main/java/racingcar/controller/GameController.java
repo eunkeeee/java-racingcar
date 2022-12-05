@@ -1,7 +1,7 @@
 package racingcar.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import racingcar.model.Cars;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -17,23 +17,28 @@ public class GameController {
 
     public void play() {
         try {
-
-            List<String> carNames = new ArrayList<>(inputView.readCarNames());
-            int numberOfTrials = inputView.readNumberOfTrials();
-
-            Cars cars = Cars.by(carNames);
-
-            outputView.printResult();
-            for (int trial = 0; trial < numberOfTrials; trial++) {
-                cars.move();
-                outputView.printMoving(cars);
-            }
-
-            System.out.println(cars.getWinners());
-            outputView.printWinner(cars);
-
+            Cars cars = Cars.by(inputView.readCarNames());
+            moveCars(cars);
+            printWinners(cars);
         } catch (IllegalArgumentException exception) {
             outputView.printExceptionMessage(exception);
         }
+    }
+
+    private void moveCars(Cars cars) {
+        int numberOfTrials = inputView.readNumberOfTrials();
+        outputView.printResult();
+        for (int trial = 0; trial < numberOfTrials; trial++) {
+            moveCarsOnce(cars);
+        }
+    }
+
+    private void moveCarsOnce(Cars cars) {
+        cars.move();
+        outputView.printMoving(cars);
+    }
+
+    private void printWinners(Cars cars) {
+        outputView.printWinners(cars);
     }
 }

@@ -1,6 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Car {
 
@@ -22,10 +24,18 @@ public class Car {
     }
 
     public void move() {
-        int randomNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
-        if (randomNumber >= Constants.BOUNDARY_VALUE.value) {
+        if (isMoveForward()) {
             this.position++;
         }
+    }
+
+    private boolean isMoveForward() {
+        return generateRandomNumber() >= Constants.BOUNDARY_VALUE.value;
+    }
+
+    private int generateRandomNumber() {
+        int randomNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
+        return randomNumber;
     }
 
     public String getResult() {
@@ -34,9 +44,7 @@ public class Car {
 
     private StringBuilder getPositionDisplay() {
         StringBuilder positionDisplay = new StringBuilder();
-        for (int i = 0; i < position; i++) {
-            positionDisplay.append("-");
-        }
+        Stream.generate(() -> "-").limit(position).forEach(positionDisplay::append);
         return positionDisplay;
     }
 
