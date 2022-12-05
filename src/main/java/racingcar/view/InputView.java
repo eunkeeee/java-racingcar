@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import racingcar.util.Util;
 import racingcar.util.validator.CarNamesValidator;
+import racingcar.util.validator.NumberOfTrialsValidator;
 
 public class InputView {
     public List<String> readCarNames() {
@@ -17,7 +18,7 @@ public class InputView {
     public int readNumberOfTrials() {
         System.out.println(ConsoleMessage.INPUT_TRIALS.message);
         String input = Console.readLine();
-        // validation
+        new NumberOfTrialsValidator().validate(input);
         return Integer.parseInt(input);
     }
 
