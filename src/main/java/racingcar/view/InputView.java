@@ -3,7 +3,8 @@ package racingcar.view;
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.util.validator.CarNameValidator;
+import racingcar.util.Util;
+import racingcar.util.validator.CarNamesValidator;
 
 public class InputView {
 
@@ -21,7 +22,7 @@ public class InputView {
     public List<String> readCarNames() {
         System.out.println(ConsoleMessage.INPUT_CAR_NAMES.message);
         String input = Console.readLine();
-        new CarNameValidator().validate(input);
-        return Arrays.asList(input.split(","));
+        new CarNamesValidator().validate(input);
+        return Arrays.asList(Util.removeSpace(input).split(","));
     }
 }

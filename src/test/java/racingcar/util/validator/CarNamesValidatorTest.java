@@ -2,7 +2,6 @@ package racingcar.util.validator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatCode;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,13 +10,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.util.ExceptionMessage;
 
-class CarNameValidatorTest {
+class CarNamesValidatorTest {
 
-    private CarNameValidator validator;
+    private CarNamesValidator validator;
 
     @BeforeEach
     void setUp() {
-        validator = new CarNameValidator();
+        validator = new CarNamesValidator();
     }
 
     @Nested
@@ -47,7 +46,7 @@ class CarNameValidatorTest {
     @Nested
     class validInputTest {
         @ParameterizedTest
-        @ValueSource(strings = {"은기,지훈,우테코"})
+        @ValueSource(strings = {"은기    ,      지훈      ,    우테코"})
         void 정상_입력(String input) {
             assertThatCode(() -> validator.validate(input))
                     .doesNotThrowAnyException();

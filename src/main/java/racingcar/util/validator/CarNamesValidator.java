@@ -3,8 +3,9 @@ package racingcar.util.validator;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.util.ExceptionMessage;
+import racingcar.util.Util;
 
-public class CarNameValidator extends Validator {
+public class CarNamesValidator extends Validator {
 
     private enum Constants {
         CAR_NAME_LENGTH(6), MIN_NUMBER_OF_CARS(2);
@@ -18,7 +19,7 @@ public class CarNameValidator extends Validator {
 
     @Override
     public void validate(String input) throws IllegalArgumentException {
-        List<String> carNames = Arrays.asList(removeSpace(input).split(","));
+        List<String> carNames = Arrays.asList(Util.removeSpace(input).split(","));
         validateNumberOfCars(carNames);
         for (String carName : carNames) {
             validateCarNameLength(carName);
