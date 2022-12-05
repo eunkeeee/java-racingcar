@@ -34,8 +34,7 @@ public class Car {
     }
 
     private int generateRandomNumber() {
-        int randomNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
-        return randomNumber;
+        return Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
     }
 
     public String getResult() {

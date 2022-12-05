@@ -4,18 +4,6 @@ import racingcar.model.Cars;
 
 public class OutputView {
 
-
-    private enum ConsoleMessage {
-        OUTPUT_RESULT("실행 결과"),
-        OUTPUT_FINAL_WINNER("최종 우승자 : %s");
-
-        private final String message;
-
-        ConsoleMessage(String message) {
-            this.message = message;
-        }
-    }
-
     public void printExceptionMessage(Exception exception) {
         System.out.println(exception.getMessage());
     }
@@ -30,5 +18,16 @@ public class OutputView {
 
     public void printWinners(Cars cars) {
         System.out.println(String.format(ConsoleMessage.OUTPUT_FINAL_WINNER.message, cars.getWinners()));
+    }
+
+    private enum ConsoleMessage {
+        OUTPUT_RESULT("실행 결과"),
+        OUTPUT_FINAL_WINNER("최종 우승자 : %s");
+
+        private final String message;
+
+        ConsoleMessage(String message) {
+            this.message = message;
+        }
     }
 }
