@@ -20,6 +20,8 @@ public class GameController {
             List<String> carNames = new ArrayList<>(inputView.readCarNames());
             System.out.println(carNames);
 
+            int numberOfTrials = inputView.readNumberOfTrials();
+            System.out.println(numberOfTrials);
 
 
         } catch (IllegalArgumentException exception) {
