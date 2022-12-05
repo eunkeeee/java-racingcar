@@ -29,10 +29,14 @@ public class Car {
     }
 
     public String getResult() {
+        return String.format("%s : %s%n", name, getPositionDisplay());
+    }
+
+    private StringBuilder getPositionDisplay() {
         StringBuilder positionDisplay = new StringBuilder();
         for (int i = 0; i < position; i++) {
             positionDisplay.append("-");
         }
-        return String.format("%s : %s%n", name, positionDisplay);
+        return positionDisplay;
     }
 }
