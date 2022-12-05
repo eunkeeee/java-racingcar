@@ -19,7 +19,7 @@ public class InputView {
         System.out.println(ConsoleMessage.INPUT_TRIALS.message);
         String input = Console.readLine();
         new NumberOfTrialsValidator().validate(input);
-        return Integer.parseInt(input);
+        return Integer.parseInt(Util.removeSpace(input));
     }
 
     private enum ConsoleMessage {
