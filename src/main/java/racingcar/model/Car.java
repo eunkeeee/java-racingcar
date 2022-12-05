@@ -3,6 +3,17 @@ package racingcar.model;
 import camp.nextstep.edu.missionutils.Randoms;
 
 public class Car {
+
+    private enum Constants {
+        MIN_RANGE(0), MAX_RANGE(9), BOUNDARY_VALUE(4);
+
+        private final int value;
+
+        Constants(int value) {
+            this.value = value;
+        }
+    }
+
     private final String name;
     private int position = 0;
 
@@ -11,8 +22,8 @@ public class Car {
     }
 
     public void move() {
-        int randomNumber = Randoms.pickNumberInRange(0, 9);
-        if (randomNumber >= 4) {
+        int randomNumber = Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
+        if (randomNumber >= Constants.BOUNDARY_VALUE.value) {
             this.position++;
         }
     }
