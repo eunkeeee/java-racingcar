@@ -23,10 +23,7 @@ public class Cars {
     }
 
     public String getWinners() {
-        StringJoiner result = new StringJoiner(", ");
-        List<Car> winners = findWinners();
-        winners.stream().map(Car::getName).forEach(result::add);
-        return result.toString();
+        return findWinners().stream().map(Car::getName).collect(Collectors.joining(", "));
     }
 
     private List<Car> findWinners() {
