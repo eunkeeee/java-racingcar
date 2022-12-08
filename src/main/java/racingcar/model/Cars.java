@@ -1,7 +1,6 @@
 package racingcar.model;
 
 import java.util.List;
-import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -36,10 +35,7 @@ public class Cars {
         return cars.stream().mapToInt(Car::getPosition).max().getAsInt();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder result = new StringBuilder();
-        cars.stream().forEach(car -> result.append(car.getResult()));
-        return result.toString();
+    public List<Car> getCars() {
+        return cars;
     }
 }

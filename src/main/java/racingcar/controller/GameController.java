@@ -28,9 +28,7 @@ public class GameController {
     private void moveCars(Cars cars) {
         int numberOfTrials = inputView.readNumberOfTrials();
         outputView.printResult();
-        for (int trial = 0; trial < numberOfTrials; trial++) {
-            moveCarsOnce(cars);
-        }
+        IntStream.rangeClosed(1, numberOfTrials).forEach(index -> moveCarsOnce(cars));
     }
 
     private void moveCarsOnce(Cars cars) {

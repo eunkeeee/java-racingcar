@@ -1,12 +1,8 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Car {
-
-    private StringBuilder positionDisplay = new StringBuilder();
 
     private enum Constants {
         MIN_RANGE(0), MAX_RANGE(9), BOUNDARY_VALUE(4);
@@ -28,7 +24,6 @@ public class Car {
     public void move() {
         if (isMoveForward()) {
             this.position++;
-            positionDisplay.append("-");
         }
     }
 
@@ -40,13 +35,6 @@ public class Car {
         return Randoms.pickNumberInRange(Constants.MIN_RANGE.value, Constants.MAX_RANGE.value);
     }
 
-    public String getResult() {
-        return String.format("%s : %s%n", name, getPositionDisplay());
-    }
-
-    private String getPositionDisplay() {
-        return positionDisplay.toString();
-    }
 
     public int getPosition() {
         return position;
